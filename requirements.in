@@ -9,3 +9,5 @@ allennlp==0.9
 overrides==3.1.0
 awscli
 jsonnet
+PyYAML==5.4.1
+

@@ -124,7 +124,7 @@ def model_evaluation(embeddings_path, results_file):
     print(scidocs_metrics)
 
     # Log scores to file
-    with open(os.path.join('Results', results_file), 'w') as f:
+    with open(results_file, 'w') as f:
         f.write(str(scidocs_metrics))
 
     return scidocs_metrics

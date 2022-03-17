@@ -1,0 +1,2 @@
+embeddings_path: 'data/random_embedder'
+results_file: 'results/results.txt'
