@@ -10,4 +10,4 @@ overrides==3.1.0
 awscli
 jsonnet
 PyYAML==5.4.1
-
+onnxruntime-gpu==1.9.0

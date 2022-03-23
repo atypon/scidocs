@@ -6,7 +6,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--conf',
-        default='configs/conf.yml',
+        default='configs/conf_evaluation.yml',
         help='Path to configuration file'
     )
     args = parser.parse_args()
