@@ -1,2 +1,6 @@
-embeddings_path: 'data/specter'
-results_file: 'results/results.txt'
+mlflow:
+  tracking_uri: 'file:../S2AND/mlruns' # Can be remote server as well eg https://my-tracking-server:5000
+  experiment_name: 'Scidocs'
+  run_name: 'reduced_mpnet'
+embeddings_path: 'data/reduced_mpnet'
+results_file: 'results/reduced_mpnet-results.txt'

@@ -168,7 +168,13 @@ def model_evaluation(embeddings_path, results_file):
     with open(results_file, 'w') as f:
         f.write(str(scidocs_metrics))
 
-    return scidocs_metrics
+    results = {}
+    for benchmark, scores in scidocs_metrics.items():
+        for score, value in scores.items():
+            metric_name = benchmark + '_' + score
+            metric_name = metric_name.replace('@', ' at ')
+            results[metric_name] = value
+    return results
 
 def embed_scidocs(model, model_name, data_dir):
     """

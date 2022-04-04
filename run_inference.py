@@ -13,10 +13,10 @@ if __name__ == "__main__":
     with open(args.conf) as f:
         conf = yaml.safe_load(f)
 
-    model = ONNXModel(conf['model']['path'], 
-                      conf['tokenizer']['pretrained_model'],
-                      conf['tokenizer']['max_length'])
+    model = ONNXModel(path_to_onnx=conf['model']['path'], 
+                      tokenizer_pretrained_model=conf['tokenizer']['pretrained_model'],
+                      tokenizer_max_length=conf['tokenizer']['max_length'])
     
-    embed_scidocs(model,
-                 conf['model']['name'],
-                 conf['data_dir'])
+    embed_scidocs(model=model,
+                 model_name=conf['model']['name'],
+                 data_dir=conf['data_dir'])

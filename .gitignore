@@ -6,7 +6,7 @@ data/*
 
 results/*
 !results/.gitkeep
-
+mlruns/
 # C extensions
 *.so
 
