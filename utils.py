@@ -94,12 +94,13 @@ class EnrichedDocumentDataset(Dataset):
 class ONNXModel():
     """Class that implements model using ONNX runtime"""
 
-    def __init__(self, path_to_onnx, tokenizer_pretrained_model, tokenizer_max_length):
+    def __init__(self, path_to_onnx, tokenizer_pretrained_model, tokenizer_max_length, inputs):
         """Initiliaze model"""
         self.model = onnxruntime.InferenceSession(path_to_onnx, providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
         self.tokenizer_max_length = tokenizer_max_length
         self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_pretrained_model)
-    
+        self.inputs = inputs 
+
     def forward(self, text):
         """Implement models forward method"""
         tokens = self.tokenizer(text,
@@ -108,18 +109,15 @@ class ONNXModel():
                     return_token_type_ids=True,
                     padding='max_length',
                     return_attention_mask=True,
-                    return_tensors='pt',
+                    return_tensors='np',
                     truncation=True)
 
-        inputs_ids = tokens['input_ids']
-        token_type_ids = tokens['token_type_ids']
-        attention_mask = tokens['attention_mask']
-        # Calculating embeddings
-        ort_inputs = {
-            'input_ids': inputs_ids.detach().cpu().numpy(),
-            'attention_mask': attention_mask.detach().cpu().numpy(),
-            'token_type_ids': token_type_ids.detach().cpu().numpy()
-            }
+        # Hold only those inputs that are set to True in yml file
+        ort_inputs = {}
+        for input_label, value in self.inputs.items():
+            if value:
+                ort_inputs[input_label] = tokens[input_label]
+                
         return self.model.run(None, ort_inputs)[0][:,0,:].squeeze(0).tolist()
 
 def log_results(fp, ids, titles, embeddings):
