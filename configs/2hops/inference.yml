@@ -6,6 +6,8 @@ model:
     input_ids: True
     attention_mask: True
     token_type_ids: False
+  output:
+    pooler: True
 tokenizer:
   pretrained_model: 'allenai/specter'
   max_length: 256
