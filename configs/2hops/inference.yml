@@ -1,0 +1,11 @@
+data_dir: 'data/'
+model:
+  name: 'specter-2hops-fp32'
+  path: 'models/s2_specter_fp32.onnx'
+  inputs:
+    input_ids: True
+    attention_mask: True
+    token_type_ids: False
+tokenizer:
+  pretrained_model: 'allenai/specter'
+  max_length: 256
