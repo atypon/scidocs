@@ -6,6 +6,8 @@ model:
     input_ids: True
     attention_mask: True
     token_type_ids: True
+  output:
+    pooler: True
 tokenizer:
   pretrained_model: 'sentence-transformers/all-mpnet-base-v2'
   max_length: 512
