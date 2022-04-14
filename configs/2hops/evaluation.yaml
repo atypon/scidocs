@@ -1,0 +1,6 @@
+mlflow:
+  tracking_uri: 'file:mlruns' # Can be remote server as well eg https://my-tracking-server:5000
+  experiment_name: 'Scidocs'
+  run_name: '2hop-fp32'
+embeddings_path: 'data/specter-2hops-fp32'
+results_file: 'results/2hops_fp32-results.txt'
