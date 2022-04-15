@@ -216,3 +216,4 @@ def embed_scidocs(model, model_name, data_dir):
 				model_input = str(title) + '[SEP]' + str(abstract)
 				model_output = model.forward(model_input)
 				entry = json.dumps({'paper_id': doc_id, 'embedding': model_output})
+				f.write(entry + '\n')
