@@ -1,0 +1,13 @@
+data_dir: 'data/'
+model:
+  name: 'reproduced-specter-fp32'
+  path: 'models/reproduced_specter.onnx'
+  inputs:
+    input_ids: True
+    attention_mask: True
+    token_type_ids: False
+  output:
+    pooler: True
+tokenizer:
+  pretrained_model: 'allenai/scibert_scivocab_uncased'
+  max_length: 256

@@ -1,0 +1,2 @@
+input_folder: data/reproduced-specter-fp32
+output_folder: data/l2-reproduced-specter-fp32
